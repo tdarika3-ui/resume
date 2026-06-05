@@ -1,0 +1,12 @@
+{
+  "name": "royal-threads",
+  "version": "1.0.0",
+  "description": "Premium retail clothing e-commerce website for Royal Threads",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx -y http-server . -p 3000 -o"
+  },
+  "keywords": [],
+  "author": "Royal Threads Team",
+  "license": "ISC"
+}

@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover high-end designer attire for men and women at Royal Threads, Echanari, Coimbatore. Shop premium festive collections with special seasonal discounts.">
+    <title>Royal Threads | Premium Fashion for Men & Women</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="header-container">
+            <a href="#" class="logo" id="header-logo">
+                <span class="royal-text">Royal</span> <span class="threads-text">Threads</span>
+            </a>
+
+            <!-- Nav Links -->
+            <nav class="nav-menu" id="nav-menu">
+                <ul>
+                    <li><a href="#" class="nav-link active" id="nav-shop" onclick="switchSection('shop')">Shop</a></li>
+                    <li><a href="#" class="nav-link" id="nav-contact" onclick="switchSection('contact')">Contact</a></li>
+                    <li><a href="#" class="nav-link" id="nav-admin" onclick="switchSection('admin')">Admin Portal</a></li>
+                </ul>
+            </nav>
+
+            <!-- Search & Actions -->
+            <div class="header-actions">
+                <div class="search-bar">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="search-input" placeholder="Search premium collection..." oninput="handleSearch()">
+                </div>
+                
+                <button class="cart-trigger" id="cart-trigger-btn" onclick="toggleCart(true)" aria-label="Open Cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cart-badge-count">0</span>
+                </button>
+
+                <button class="menu-toggle" id="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-content">
+
+        <!-- SHOP SECTION -->
+        <section id="section-shop" class="app-section active">
+            <!-- Promotional Hero Banner -->
+            <div class="hero-banner" id="promo-banner" style="background-image: linear-gradient(rgba(10, 25, 47, 0.6), rgba(10, 25, 47, 0.85)), url('images/hero_banner.png');">
+                <div class="hero-content">
+                    <span class="hero-tag">Festive Celebration</span>
+                    <h1 class="hero-title">Elevate Your Elegance</h1>
+                    <p class="hero-subtitle">Celebrate in style with our exclusive Diwali & Pongal collections. Enjoy premium savings, custom tailoring fit, and automatic 3% online checkout discounts.</p>
+                    <div class="hero-promos">
+                        <div class="promo-badge"><i class="fas fa-gift"></i> Diwali Festive: 15% OFF</div>
+                        <div class="promo-badge"><i class="fas fa-sun"></i> Pongal Harvest: 10% OFF</div>
+                        <div class="promo-badge"><i class="fas fa-credit-card"></i> Online Pay: Extra 3% OFF</div>
+                    </div>
+                    <button class="btn btn-primary btn-large" onclick="scrollToProducts()">Browse Collections</button>
+                </div>
+            </div>
+
+            <!-- Shop Controls & Filters -->
+            <div class="shop-controls-container" id="products-anchor">
+                <div class="categories-filter" id="categories-filter-bar">
+                    <button class="filter-btn active" onclick="filterCategory('all', this)">All Collections</button>
+                    <button class="filter-btn" onclick="filterCategory('men', this)">Men's Couture</button>
+                    <button class="filter-btn" onclick="filterCategory('women', this)">Women's Atelier</button>
+                    <button class="filter-btn" onclick="filterCategory('festive', this)">Festive Wear</button>
+                </div>
+                <div class="sort-selector-container">
+                    <label for="sort-select" class="sort-label">Sort by:</label>
+                    <select id="sort-select" class="sort-select" onchange="handleSort()">
+                        <option value="default">Featured</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to High</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="products-grid-container">
+                <div class="products-grid" id="products-grid-list">
+                    <!-- Products will be dynamically loaded here by app.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT & LOCATION SECTION -->
+        <section id="section-contact" class="app-section">
+            <div class="contact-container">
+                <div class="contact-info-card">
+                    <span class="section-tag">Find Us</span>
+                    <h2>Royal Threads Boutique</h2>
+                    <p class="contact-desc">Experience royal tailoring and boutique luxury in person. Our design consultants are ready to assist you.</p>
+                    
+                    <div class="contact-details-list">
+                        <div class="contact-detail-item">
+                            <div class="contact-detail-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="contact-detail-text">
+                                <strong>Address</strong>
+                                <p>Echanari, Coimbatore,<br>Tamil Nadu, India</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail-item">
+                            <div class="contact-detail-icon"><i class="fas fa-phone-alt"></i></div>
+                            <div class="contact-detail-text">
+                                <strong>Phone Numbers</strong>
+                                <p>
+                                    <a href="tel:+919342362394" class="contact-link">+91 93423 62394</a><br>
+                                    <a href="tel:+916380737995" class="contact-link">+91 63807 37995</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="contact-detail-item">
+                            <div class="contact-detail-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="contact-detail-text">
+                                <strong>Email</strong>
+                                <p><a href="mailto:Royalthreads@gmail.com" class="contact-link">Royalthreads@gmail.com</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-detail-item">
+                            <div class="contact-detail-icon"><i class="fas fa-clock"></i></div>
+                            <div class="contact-detail-text">
+                                <strong>Store Hours</strong>
+                                <p>Monday - Sunday: 10:00 AM - 9:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Custom Map Card and Form -->
+                <div class="contact-interactive">
+                    <div class="map-card">
+                        <!-- Custom styled CSS/SVG Map Graphic -->
+                        <div class="mock-map">
+                            <div class="mock-map-bg"></div>
+                            <div class="mock-map-marker">
+                                <div class="pulse-ring"></div>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span class="marker-label">Royal Threads</span>
+                            </div>
+                            <div class="mock-map-overlay">
+                                <h3>Royal Threads Coimbatore</h3>
+                                <p>Near Eachanari Temple, Coimbatore, Tamil Nadu 641021</p>
+                                <a href="https://maps.google.com/?q=Eachanari+Coimbatore+Tamil+Nadu" target="_blank" class="btn btn-secondary btn-small"><i class="fas fa-directions"></i> Get Directions</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-card">
+                        <h3>Send a Design Inquiry</h3>
+                        <form id="contact-form" onsubmit="handleContactSubmit(event)">
+                            <div class="form-group">
+                                <label for="contact-name">Full Name</label>
+                                <input type="text" id="contact-name" class="form-control" required placeholder="Enter your name">
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-email-input">Email Address</label>
+                                <input type="email" id="contact-email-input" class="form-control" required placeholder="Enter your email">
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-message">Inquiry Message</label>
+                                <textarea id="contact-message" class="form-control" rows="4" required placeholder="What custom fitting or garment designs are you interested in?"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Submit Inquiry</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ADMIN PORTAL SECTION -->
+        <section id="section-admin" class="app-section">
+            <!-- Security Gate -->
+            <div id="admin-login-gate" class="admin-login-card">
+                <div class="login-header">
+                    <i class="fas fa-lock"></i>
+                    <h2>Staff Verification</h2>
+                    <p>Enter the security PIN to access the Royal Threads inventory & sales reports.</p>
+                </div>
+                <form id="admin-login-form" onsubmit="handleAdminLogin(event)">
+                    <div class="form-group">
+                        <label for="admin-pin">Security PIN</label>
+                        <input type="password" id="admin-pin" class="form-control" required placeholder="••••" maxlength="4" autocomplete="current-password">
+                        <span class="error-msg" id="login-error-msg">Incorrect PIN. Please try again. (Default: 1234)</span>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Authenticate</button>
+                </form>
+            </div>
+
+            <!-- Authenticated Admin Panel -->
+            <div id="admin-dashboard-panel" class="admin-dashboard-container hidden">
+                <div class="admin-sidebar">
+                    <div class="admin-profile">
+                        <div class="profile-avatar"><i class="fas fa-user-shield"></i></div>
+                        <div class="profile-info">
+                            <h4>Store Manager</h4>
+                            <span class="status-indicator online">System Active</span>
+                        </div>
+                    </div>
+                    <ul class="admin-nav">
+                        <li><a href="#" class="admin-nav-link active" id="admin-tab-products" onclick="switchAdminTab('products')"><i class="fas fa-boxes"></i> Inventory Manager</a></li>
+                        <li><a href="#" class="admin-nav-link" id="admin-tab-sales" onclick="switchAdminTab('sales')"><i class="fas fa-chart-line"></i> Sales & Analytics</a></li>
+                        <li><a href="#" class="admin-nav-link" id="admin-tab-orders" onclick="switchAdminTab('orders')"><i class="fas fa-receipt"></i> Order Records</a></li>
+                    </ul>
+                    <button class="btn btn-outline btn-block logout-btn" onclick="handleAdminLogout()"><i class="fas fa-sign-out-alt"></i> Exit Admin Portal</button>
+                </div>
+
+                <div class="admin-body">
+                    <!-- Tab: Inventory Manager -->
+                    <div id="admin-view-products" class="admin-tab-view active">
+                        <div class="admin-view-header">
+                            <div>
+                                <h2>Inventory Management</h2>
+                                <p>Manage, edit, or append garments to the customer catalog.</p>
+                            </div>
+                            <button class="btn btn-primary" onclick="openAddProductModal()"><i class="fas fa-plus"></i> Add New Product</button>
+                        </div>
+                        <div class="admin-table-container">
+                            <table class="admin-table" id="inventory-table">
+                                <thead>
+                                    <tr>
+                                        <th>Image</th>
+                                        <th>Name</th>
+                                        <th>Category</th>
+                                        <th>Price (Base)</th>
+                                        <th>GST %</th>
+                                        <th>Stock</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="inventory-table-body">
+                                    <!-- Dynamic rows from app.js -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Tab: Sales & Analytics -->
+                    <div id="admin-view-sales" class="admin-tab-view">
+                        <div class="admin-view-header">
+                            <div>
+                                <h2>Monthly Sales Report</h2>
+                                <p>Financial summaries, taxes (GST), discounts, and conversion rates.</p>
+                            </div>
+                            <div class="sales-filters">
+                                <select id="sales-month-select" class="form-control select-small" onchange="loadSalesReport()">
+                                    <option value="2026-06">June 2026 (Current)</option>
+                                    <option value="2026-05">May 2026</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- KPI Dashboard Grid -->
+                        <div class="kpi-grid">
+                            <div class="kpi-card">
+                                <div class="kpi-icon blue"><i class="fas fa-rupee-sign"></i></div>
+                                <div class="kpi-stats">
+                                    <span class="kpi-label">Gross Revenue</span>
+                                    <h3 class="kpi-value" id="kpi-revenue">₹0.00</h3>
+                                </div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-icon green"><i class="fas fa-shopping-basket"></i></div>
+                                <div class="kpi-stats">
+                                    <span class="kpi-label">Items Sold</span>
+                                    <h3 class="kpi-value" id="kpi-items-sold">0</h3>
+                                </div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-icon orange"><i class="fas fa-percent"></i></div>
+                                <div class="kpi-stats">
+                                    <span class="kpi-label">Discounts Awarded</span>
+                                    <h3 class="kpi-value" id="kpi-discounts">₹0.00</h3>
+                                </div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-icon gold"><i class="fas fa-university"></i></div>
+                                <div class="kpi-stats">
+                                    <span class="kpi-label">GST Collected</span>
+                                    <h3 class="kpi-value" id="kpi-gst">₹0.00</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Analytics Detail -->
+                        <div class="sales-analytics-grid">
+                            <div class="analytics-card">
+                                <h3>Product Category Sales Breakdown</h3>
+                                <div class="sales-breakdown-list" id="category-sales-list">
+                                    <!-- Dynamic list from app.js -->
+                                </div>
+                            </div>
+                            <div class="analytics-card">
+                                <h3>Store Activity Summary</h3>
+                                <div class="store-summary-stats">
+                                    <div class="summary-stat-row">
+                                        <span>Total Orders Completed:</span>
+                                        <strong id="stat-total-orders">0</strong>
+                                    </div>
+                                    <div class="summary-stat-row">
+                                        <span>Average Basket Value:</span>
+                                        <strong id="stat-avg-basket">₹0.00</strong>
+                                    </div>
+                                    <div class="summary-stat-row">
+                                        <span>Online Payment Share:</span>
+                                        <strong>100% (QR Code System)</strong>
+                                    </div>
+                                    <div class="summary-stat-row">
+                                        <span>Low Stock Alerts:</span>
+                                        <strong class="alert-text" id="stat-low-stock-count">0 Items</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab: Order Records -->
+                    <div id="admin-view-orders" class="admin-tab-view">
+                        <div class="admin-view-header">
+                            <div>
+                                <h2>Customer Order Log</h2>
+                                <p>Track order fulfillment status and view completed transactions.</p>
+                            </div>
+                        </div>
+                        <div class="admin-table-container">
+                            <table class="admin-table" id="orders-table">
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Date & Time</th>
+                                        <th>Items</th>
+                                        <th>Total Paid</th>
+                                        <th>Discounts</th>
+                                        <th>GST</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="orders-table-body">
+                                    <!-- Dynamic rows from app.js -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="footer-top">
+            <div class="footer-col brand-col">
+                <span class="logo"><span class="royal-text">Royal</span> <span class="threads-text">Threads</span></span>
+                <p>Premium couture and tailor-fit clothing for men and women. Crafting elegance, celebrating traditions, serving luxury.</p>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+            </div>
+            <div class="footer-col links-col">
+                <h4>Collections</h4>
+                <ul>
+                    <li><a href="#" onclick="switchSection('shop'); filterCategory('men')">Men's Suits & Kurta</a></li>
+                    <li><a href="#" onclick="switchSection('shop'); filterCategory('women')">Women's Gowns & Sarees</a></li>
+                    <li><a href="#" onclick="switchSection('shop'); filterCategory('festive')">Festive Diwali & Pongal Collections</a></li>
+                    <li><a href="#" onclick="switchSection('shop')">New Arrivals</a></li>
+                </ul>
+            </div>
+            <div class="footer-col contact-col">
+                <h4>Royal Threads Coimbatore</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Eachanari, Coimbatore, Tamil Nadu, India</p>
+                <p><i class="fas fa-phone-alt"></i> <a href="tel:+919342362394">+91 93423 62394</a> / <a href="tel:+916380737995">+91 63807 37995</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:Royalthreads@gmail.com">Royalthreads@gmail.com</a></p>
+                <p><i class="fas fa-wallet"></i> Cashless Payments via QR Code Accepted</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Royal Threads. All rights reserved. Designed for Premium Apparel Retail.</p>
+        </div>
+    </footer>
+
+    <!-- CART SIDEBAR DRAWER -->
+    <div class="cart-drawer-overlay" id="cart-drawer-overlay" onclick="toggleCart(false)"></div>
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <h3>Your Wardrobe Cart</h3>
+            <button class="close-cart-btn" onclick="toggleCart(false)" aria-label="Close Cart"><i class="fas fa-times"></i></button>
+        </div>
+
+        <div class="cart-body" id="cart-items-container">
+            <!-- Dynamic cart items will load here -->
+            <div class="empty-cart-message">
+                <i class="fas fa-shopping-bag empty-bag-icon"></i>
+                <p>Your bag is empty. Start adding premium threads!</p>
+                <button class="btn btn-primary" onclick="toggleCart(false)">Continue Shopping</button>
+            </div>
+        </div>
+
+        <!-- Cart Summary and Checkout -->
+        <div class="cart-footer hidden" id="cart-summary-section">
+            <div class="cart-pricing-summary">
+                <div class="pricing-row">
+                    <span>Subtotal (Base Price):</span>
+                    <span id="summary-subtotal">₹0.00</span>
+                </div>
+                <div class="pricing-row">
+                    <span>GST (Estimated Taxes):</span>
+                    <span id="summary-gst">₹0.00</span>
+                </div>
+                <div class="pricing-row promo-discount">
+                    <span>Festive Discount:</span>
+                    <span id="summary-festive-discount">-₹0.00</span>
+                </div>
+                <div class="pricing-row online-discount">
+                    <span>Online Checkout Benefit (3%):</span>
+                    <span id="summary-online-discount">-₹0.00</span>
+                </div>
+                <hr class="summary-divider">
+                <div class="pricing-row total-payable">
+                    <span>Net Payable Total:</span>
+                    <span id="summary-grand-total">₹0.00</span>
+                </div>
+            </div>
+
+            <div class="cart-action-buttons">
+                <button class="btn btn-outline btn-block" onclick="clearCart()"><i class="fas fa-trash-alt"></i> Clear Cart</button>
+                <button class="btn btn-primary btn-block btn-large" onclick="openPaymentModal()"><i class="fas fa-check-double"></i> Checkout & Pay Now</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRODUCT DETAIL MODAL (Variation & Model Viewer) -->
+    <div class="modal-backdrop" id="product-detail-modal" onclick="closeProductDetailModal(event)">
+        <div class="modal-container detail-modal-width">
+            <button class="modal-close-btn" onclick="closeProductDetailModalDirect()"><i class="fas fa-times"></i></button>
+            
+            <div class="product-detail-layout">
+                <!-- Gallery Section -->
+                <div class="detail-gallery">
+                    <div class="main-image-container">
+                        <img src="" alt="Main product display" id="modal-main-image">
+                    </div>
+                    <div class="thumbnails-container" id="modal-thumbnails-list">
+                        <!-- Dynamic model variation thumbnails from app.js -->
+                    </div>
+                </div>
+
+                <!-- Info Section -->
+                <div class="detail-info">
+                    <span class="detail-category-tag" id="modal-product-category">Men's Couture</span>
+                    <h2 class="detail-product-title" id="modal-product-title">Premium Charcoal Blazer</h2>
+                    
+                    <div class="detail-price-box">
+                        <span class="detail-final-price" id="modal-final-price">₹12,499.00</span>
+                        <div class="detail-price-breakdown">
+                            <span class="detail-base-price">Base: <span id="modal-base-price">₹10,500</span></span>
+                            <span class="detail-gst-rate">GST: <span id="modal-gst-rate">5%</span></span>
+                            <span class="detail-discount-tag" id="modal-discount-tag">15% Off (Diwali Promotion)</span>
+                        </div>
+                    </div>
+
+                    <div class="product-description">
+                        <p id="modal-product-desc">Indulge in our exquisite tailor-made garments, woven with premium materials and optimized for the perfect designer fit.</p>
+                    </div>
+
+                    <!-- Variations Selectors -->
+                    <div class="variation-selectors">
+                        <div class="selector-group">
+                            <label class="selector-label">Fit / Model Variation:</label>
+                            <div class="variation-options" id="modal-variation-options">
+                                <!-- Model tags loaded from app.js -->
+                            </div>
+                        </div>
+
+                        <div class="selector-group">
+                            <label class="selector-label">Select Size:</label>
+                            <div class="size-options">
+                                <button class="size-btn active" onclick="selectSize(this)">S</button>
+                                <button class="size-btn" onclick="selectSize(this)">M</button>
+                                <button class="size-btn" onclick="selectSize(this)">L</button>
+                                <button class="size-btn" onclick="selectSize(this)">XL</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-action-box">
+                        <button class="btn btn-primary btn-large btn-block" id="modal-add-to-cart-btn" onclick="addModalItemToCart()">
+                            <i class="fas fa-cart-plus"></i> Add Item to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAYMENT & RECEIPT MODAL -->
+    <div class="modal-backdrop" id="payment-modal" onclick="closePaymentModal(event)">
+        <div class="modal-container payment-modal-width">
+            
+            <!-- STEP 1: Payment Checkout Page -->
+            <div id="payment-checkout-step" class="payment-step-view active">
+                <button class="modal-close-btn" onclick="closePaymentModalDirect()"><i class="fas fa-times"></i></button>
+                <div class="payment-header">
+                    <h2>Royal Threads Checkout</h2>
+                    <p>Scan and complete your payment securely via UPI QR.</p>
+                </div>
+
+                <div class="payment-qr-container">
+                    <div class="qr-frame">
+                        <!-- Dynamically drawn styled canvas QR code -->
+                        <div class="mock-qr-code" id="qrcode-canvas-container">
+                            <div class="qr-corner top-left"></div>
+                            <div class="qr-corner top-right"></div>
+                            <div class="qr-corner bottom-left"></div>
+                            <div class="qr-corner bottom-right"></div>
+                            <!-- Mock QR matrix pattern -->
+                            <div class="qr-pattern"></div>
+                            <div class="qr-brand-logo">RT</div>
+                        </div>
+                    </div>
+                    <div class="qr-payment-details">
+                        <span class="qr-payment-label">Total Payable Amount</span>
+                        <h3 class="qr-payment-total" id="payment-payable-amount">₹0.00</h3>
+                        <p class="qr-payment-instructions">Open your banking app (GPay, PhonePe, Paytm, BHIM) and scan this QR code. Once transfer is completed, click simulation below.</p>
+                        
+                        <div class="upi-apps-logos">
+                            <i class="fab fa-google-pay" title="GPay"></i>
+                            <span class="upi-logo-text">UPI Enabled</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="payment-actions">
+                    <button class="btn btn-secondary" onclick="closePaymentModalDirect()">Cancel & Return</button>
+                    <button class="btn btn-success" onclick="simulatePaymentSuccess()"><i class="fas fa-check-circle"></i> Simulate Payment Success</button>
+                </div>
+            </div>
+
+            <!-- STEP 2: Payment Success & Printed Invoice Receipt -->
+            <div id="payment-receipt-step" class="payment-step-view">
+                <button class="modal-close-btn" onclick="closePaymentModalDirect()"><i class="fas fa-times"></i></button>
+                <div class="payment-success-banner">
+                    <div class="success-check-icon"><i class="fas fa-check"></i></div>
+                    <h2>Payment Successful!</h2>
+                    <p>Thank you for purchasing from Royal Threads Coimbatore.</p>
+                </div>
+
+                <!-- Receipt Invoice (Designed for standard A4/thermal printing) -->
+                <div class="receipt-print-wrapper" id="receipt-invoice-print-area">
+                    <div class="receipt-invoice-container">
+                        <div class="receipt-invoice-header">
+                            <span class="invoice-brand">ROYAL THREADS</span>
+                            <p class="invoice-meta-address">Eachanari, Coimbatore, Tamil Nadu, India<br>Phone: +91 93423 62394 / +91 63807 37995<br>Email: Royalthreads@gmail.com</p>
+                            <hr class="invoice-divider">
+                            <div class="invoice-meta-row">
+                                <span><strong>Receipt No:</strong> <span id="receipt-no-val">RT-983281</span></span>
+                                <span><strong>Date:</strong> <span id="receipt-date-val">05-06-2026</span></span>
+                            </div>
+                        </div>
+
+                        <div class="receipt-invoice-body">
+                            <table class="receipt-invoice-table">
+                                <thead>
+                                    <tr>
+                                        <th>Description</th>
+                                        <th>Qty</th>
+                                        <th>Rate</th>
+                                        <th>Total (Base)</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="receipt-invoice-items-body">
+                                    <!-- Dynamic rows loaded here -->
+                                </tbody>
+                            </table>
+
+                            <hr class="invoice-divider">
+
+                            <div class="receipt-invoice-pricing">
+                                <div class="invoice-pricing-row">
+                                    <span>Subtotal (Base Price):</span>
+                                    <span id="receipt-subtotal">₹0.00</span>
+                                </div>
+                                <div class="invoice-pricing-row">
+                                    <span>CGST + SGST (Estimated Taxes):</span>
+                                    <span id="receipt-gst">₹0.00</span>
+                                </div>
+                                <div class="invoice-pricing-row">
+                                    <span>Festive Promo Discount:</span>
+                                    <span id="receipt-festive-discount">-₹0.00</span>
+                                </div>
+                                <div class="invoice-pricing-row">
+                                    <span>Online Checkout Discount (3%):</span>
+                                    <span id="receipt-online-discount">-₹0.00</span>
+                                </div>
+                                <hr class="invoice-sub-divider">
+                                <div class="invoice-pricing-row invoice-grand-total">
+                                    <span>GRAND TOTAL:</span>
+                                    <span id="receipt-grand-total">₹0.00</span>
+                                </div>
+                            </div>
+
+                            <hr class="invoice-divider">
+                            <div class="receipt-invoice-footer">
+                                <p><strong>Payment Status:</strong> PAID (UPI QR Simulation)</p>
+                                <p>This is a computer-generated billing receipt. No physical signature is required.</p>
+                                <p class="thank-you-msg">~ Thank You for Shopping with Royal Threads! ~</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="payment-actions">
+                    <button class="btn btn-primary" onclick="printReceipt()"><i class="fas fa-print"></i> Print Invoice Receipt</button>
+                    <button class="btn btn-secondary" onclick="completePaymentWorkflow()"><i class="fas fa-shopping-basket"></i> Back to Store</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ADMIN: ADD/EDIT PRODUCT MODAL -->
+    <div class="modal-backdrop" id="admin-product-modal" onclick="closeAdminProductModal(event)">
+        <div class="modal-container admin-modal-width">
+            <button class="modal-close-btn" onclick="closeAdminProductModalDirect()"><i class="fas fa-times"></i></button>
+            <div class="admin-modal-header">
+                <h2 id="admin-product-modal-title">Add New Inventory Garment</h2>
+                <p>Ensure details are entered accurately for storefront presentation.</p>
+            </div>
+
+            <form id="admin-product-form" onsubmit="handleAdminProductSubmit(event)">
+                <input type="hidden" id="admin-product-id-val">
+                
+                <div class="form-row">
+                    <div class="form-group col-6">
+                        <label for="admin-product-name">Product Name *</label>
+                        <input type="text" id="admin-product-name" class="form-control" required placeholder="e.g. Silk Zari Saree">
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="admin-product-category">Category *</label>
+                        <select id="admin-product-category" class="form-control" required>
+                            <option value="men">Men's Couture</option>
+                            <option value="women">Women's Atelier</option>
+                            <option value="festive">Festive Wear (Men & Women)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-4">
+                        <label for="admin-product-base-price">Base Price (₹) *</label>
+                        <input type="number" id="admin-product-base-price" class="form-control" required min="100" step="0.01" placeholder="e.g. 4500" oninput="calculateAdminFinalPrice()">
+                    </div>
+                    <div class="form-group col-4">
+                        <label for="admin-product-gst-rate">GST Rate (%) *</label>
+                        <select id="admin-product-gst-rate" class="form-control" required onchange="calculateAdminFinalPrice()">
+                            <option value="5">5% (Standard Apparel)</option>
+                            <option value="12">12% (Premium Apparel)</option>
+                            <option value="18">18% (Luxury items)</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-4">
+                        <label for="admin-product-discount">Festive Discount (%)</label>
+                        <input type="number" id="admin-product-discount" class="form-control" min="0" max="90" placeholder="e.g. 15" value="0" oninput="calculateAdminFinalPrice()">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-6">
+                        <label for="admin-product-stock">Stock Quantity *</label>
+                        <input type="number" id="admin-product-stock" class="form-control" required min="0" placeholder="e.g. 25">
+                    </div>
+                    <div class="form-group col-6">
+                        <label>Calculated Final Storefront Price (Incl. GST & Discount)</label>
+                        <div class="calculated-price-box" id="admin-calculated-store-price">₹0.00</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="admin-product-desc">Product Description</label>
+                    <textarea id="admin-product-desc" class="form-control" rows="3" placeholder="Briefly describe the weave, fabric quality, styling recommendations..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Product Variations (Model Image Variations) *</label>
+                    <p class="field-explanation">At least one image path must be provided. Path format should be a local file path or image url.</p>
+                    <div class="form-row">
+                        <div class="form-group col-6">
+                            <label for="admin-product-img1">Image 1 (Main Product Image) *</label>
+                            <input type="text" id="admin-product-img1" class="form-control" required placeholder="e.g. images/mens_suit_1.png" value="images/mens_suit_1.png">
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="admin-product-img1-label">Image 1 Label / Variation Name</label>
+                            <input type="text" id="admin-product-img1-label" class="form-control" placeholder="e.g. Designer Fit" value="Designer Fit">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-6">
+                            <label for="admin-product-img2">Image 2 (Variation Image)</label>
+                            <input type="text" id="admin-product-img2" class="form-control" placeholder="e.g. images/mens_suit_2.png" value="images/mens_suit_2.png">
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="admin-product-img2-label">Image 2 Label / Variation Name</label>
+                            <input type="text" id="admin-product-img2-label" class="form-control" placeholder="e.g. Close up Details" value="Close up Details">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeAdminProductModalDirect()">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="admin-submit-btn">Save Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast-notification" class="toast-message">
+        <i class="fas fa-info-circle toast-icon" id="toast-icon"></i>
+        <span id="toast-text">Item added to your wardrobe.</span>
+    </div>
+
+    <!-- Main JS Application Logic -->
+    <script src="app.js"></script>
+</body>
+</html>
